@@ -1,8 +1,8 @@
 package com.nanda.core.base;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.NoRepositoryBean;
 
-@Repository
-public abstract class BaseRepository<T, ID> implements JpaRepository<T, ID> {
+@NoRepositoryBean
+public interface BaseRepository<T,U> extends JpaRepository<T,U> {
 }

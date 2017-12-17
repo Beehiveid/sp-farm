@@ -3,12 +3,14 @@ package com.nanda.core.base;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.MappedSuperclass;
 import java.util.List;
 
 @MappedSuperclass
-public class BaseController<T extends BaseService<R extends BaseRepository<U, V>, U, V>, U, V, R> {
+public class BaseController<T extends BaseService<?, U, V>, U, V> {
     @Autowired
     private T service;
 
@@ -20,5 +22,10 @@ public class BaseController<T extends BaseService<R extends BaseRepository<U, V>
     @GetMapping("/{id}")
     public U findById(@PathVariable V id){
         return service.findById(id);
+    }
+
+    @PostMapping
+    public void create(@RequestBody U u){
+        service.save(u);
     }
 }

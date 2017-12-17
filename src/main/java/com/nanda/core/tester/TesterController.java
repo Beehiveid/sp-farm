@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/tester")
-public class TesterController extends BaseController<TesterService, Tester, Long, TesterRepository> {
+public class TesterController extends BaseController<TesterService, Tester, Long> {
 }
