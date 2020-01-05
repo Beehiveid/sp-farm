@@ -30,4 +30,9 @@ public class BaseController<T extends BaseService<?, U, V>, U, V> {
     public void update(@PathVariable V id, @RequestBody U u){
         service.update(id, u);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable V id){
+        service.delete(id);
+    }
 }

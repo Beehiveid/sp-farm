@@ -41,4 +41,11 @@ public class BaseService<T extends BaseRepository<U,V>, U, V> {
         if(exist != null)
             this.save(u);
     }
+
+    void delete(V id) {
+        U exist = this.shouldExist(id);
+
+        if(exist != null)
+            repository.delete(exist);
+    }
 }
