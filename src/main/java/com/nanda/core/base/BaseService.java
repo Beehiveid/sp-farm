@@ -8,7 +8,7 @@ import java.util.List;
 @MappedSuperclass
 public class BaseService<T extends BaseRepository<U,V>, U, V> {
     @Autowired
-    private T repository;
+    protected T repository;
 
     List<U> findAll(){
         return repository.findAll();
@@ -26,12 +26,26 @@ public class BaseService<T extends BaseRepository<U,V>, U, V> {
         repository.saveAll(u);
     }
 
-    U shouldExist(V id){
+    private U shouldExist(V id){
         U e = this.findById(id);
 
         if(e == null)
             throw new RuntimeException("Not Exist");
 
         return e;
+    }
+
+    void update(V id, U u) {
+        U exist = this.shouldExist(id);
+
+        if(exist != null)
+            this.save(u);
+    }
+
+    void delete(V id) {
+        U exist = this.shouldExist(id);
+
+        if(exist != null)
+            repository.delete(exist);
     }
 }
