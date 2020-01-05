@@ -1,5 +1,6 @@
 package com.nanda.core.employee;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nanda.core.base.AuditorBase;
 import com.nanda.core.job.Job;
 import lombok.Data;
@@ -21,6 +22,6 @@ class Employee extends AuditorBase {
 
     @ManyToOne
     @JoinColumn(name = "job_id")
+    @JsonIgnoreProperties(value = {"description","createdDate","modifiedDate"})
     private Job job;
-
 }
