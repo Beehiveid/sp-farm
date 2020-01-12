@@ -18,11 +18,11 @@ public class BaseService<T extends BaseRepository<U,V>, U, V> {
         return repository.findById(id).orElse(null);
     }
 
-    void save(U u){
+    protected void save(U u){
         repository.save(u);
     }
 
-    void save(List<U> u){
+    public void save(List<U> u){
         repository.saveAll(u);
     }
 

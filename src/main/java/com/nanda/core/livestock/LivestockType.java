@@ -18,7 +18,7 @@ public enum LivestockType {
         this.big = big;
     }
 
-    public LivestockType get(int id){
+    public static LivestockType get(int id){
         for (LivestockType value : LivestockType.values()) {
             if(value.getId() == id)
                 return value;
