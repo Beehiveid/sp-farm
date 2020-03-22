@@ -25,8 +25,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "Core API",
-                "Base functional code for web service development",
+                "Farm API",
+                "Documentation for Farm Business Solution",
                 "1.0.0",
                 "Terms of service",
                 new Contact("Febrinanda Endriz Pratama", "https://github.com/febriinanda", "febriinanda@gmail.com"),
